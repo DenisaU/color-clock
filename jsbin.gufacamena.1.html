@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by anonymous (http://jsbin.com/gufacamena/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+* { margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+}
+
+#clock {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  font-family: 'Courgette', cursive;
+  font-size:68px;
+  margin-top: -34px;
+
+}
+
+/*
+position:relative; told your browser that you would like if the given element would not appear in its normal behavior, 
+but somewhere else in accordance with its normal position. So in this case, it would appear at 
+the 50% point of the height in this container (top:50%;). 
+
+
+The element #clock is contained in the body element which is contained in the html element. 
+If you set both of their heights to 100%, then the height of the browser window will be the reference point 
+o which the top:50%; can refer to.
+*/
+
+
+</style>
+</head>
+<body>
+<div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+function colorClock(){
+  var date = new Date();
+
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+  if (hours <= 9) {
+    hours = "0" + hours;
+  }
+  if (minutes <= 9) {
+    minutes = "0" + minutes;
+  }
+  if (seconds <= 9) {
+    seconds = "0" + seconds;
+  }
+
+  var clockFace = hours + ':' + minutes + ':' + seconds;
+  var hexColor = '#' + hours + minutes + seconds;
+
+  document.getElementById('clock').innerHTML = clockFace;
+  document.body.style.background = hexColor;
+
+  setTimeout(function() {
+    colorClock();
+  }, 1000);
+}
+
+colorClock();
+</script>
+</body>
+</html>
